@@ -26,3 +26,5 @@ jobs:
         run: |
           cd ~/YoTo   
           node Script/Telecom_YouAutoRead1.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ }}
