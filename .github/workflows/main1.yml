@@ -11,18 +11,18 @@ jobs:
     steps:
       - name: Checkout
         run: |
-          git clone https://github.com/YoToTelecom/YoTo.git ~/js
+          git clone https://github.com/YoToTelecom/YoTo.git ~/YoTo
       - name: Use Node.js 14.x
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
       - name: npm install
         run: |
-          cd ~/js
+          cd ~/YoTo
           npm install
           npm install cron
           npm install request
       - name: '运行 【Telecom_AutoRead】'
         run: |
-          cd ~/js   
+          cd ~/YoTo   
           node Script/Telecom_AutoRead.js
