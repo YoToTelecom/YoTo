@@ -1,0 +1,33 @@
+name: Telecom_Read
+
+on:
+  workflow_dispatch:
+  schedule:
+     - cron: '5 0,2,18,20,22 * * *'
+  watch:
+    types: started
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    env:
+      YOUTH_READ: ${{ secrets.YOUTH_READ }}
+      TZ: Asia/shanghai
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: npm install
+        run: |
+          npm install
+          
+      - name: '运行 【Telecom_Read】'
+        if: env.YOUTH_READ
+        run: |
+          node Youth_Read.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ }}
+          YOUTH_ATIME: ${{ secrets.YOUTH_ATIME }}
