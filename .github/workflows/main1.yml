@@ -25,4 +25,4 @@ jobs:
       - name: '运行 【Telecom_AutoRead】'
         run: |
           cd ~/YoTo   
-          node Script/Telecom_AutoRead.js
+          node Script/Telecom_YouAutoRead.js
